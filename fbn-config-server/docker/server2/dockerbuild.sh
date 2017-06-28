@@ -1,0 +1,1 @@
+docker build -t fbn-config-server:1.0 .

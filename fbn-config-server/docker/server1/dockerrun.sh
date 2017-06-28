@@ -1,0 +1,1 @@
+docker run -v /home/ubuntu/GitRepo:/GitRepo --net host -p 9000:9000 fbn-config-server:1.0
