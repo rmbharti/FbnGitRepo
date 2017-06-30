@@ -1,0 +1,1 @@
+sudo /usr/sbin/mesos-slave --master=zk://172.31.20.169:2181,172.31.38.97:2181,172.31.47.88:2181,172.31.22.150:2181,172.31.30.203:2181/mesos --log_dir=/home/ubuntu/var/log/mesos --containerizers=docker,mesos --executor_registration_timeout=5mins --hostname=172.31.40.65 --ip=172.31.40.65  --resources=ports:[[8000-9999,31000-32000]] --work_dir=/var/lib/mesos

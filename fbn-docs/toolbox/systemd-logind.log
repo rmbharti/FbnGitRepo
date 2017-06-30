@@ -1,0 +1,4 @@
+/proc/self/fd/9: 4: ulimit: error setting limit (Invalid argument)
+Removed session 2.
+Removed session 1.
+/proc/self/fd/9: 4: ulimit: error setting limit (Invalid argument)

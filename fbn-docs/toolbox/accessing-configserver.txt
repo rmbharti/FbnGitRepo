@@ -1,0 +1,9 @@
+	
+I wasn't able to find the real cause of the problem - I shut down my VM and host machine, restarted both, restarted Tomcat, and was then able to reach 1.2.3.4:8080/test/ from the host.
+
+I did narrow the problem down to the host (I think): I tried firing up a different VM and saw the same behaviour trying to reach the Tomcat server on that from the host. My host iptable rules don't appear to have changed since the reboot, however.
+
+Update:
+
+The same behaviour described in the question returned the next day. I switched from using a bridged network adapter to NAT on eth0 and a host-only network on eth1 with static IPs. 
+Everything's running smoothly now (with no further changes to iptables).

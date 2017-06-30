@@ -1,0 +1,18 @@
+# docker run -d -p 5000:5000 --restart=always --name registry \
+#  -v `pwd`/certs:/certs \
+# -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+#  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
+#  registry:2
+
+# This command creates a local registry on 5000
+
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# command to build  images for docker using docker file
+docker build -t fbn-config-server:1.0 .
+
+# displays IP Address of machine
+docker-machine ip default
+
+# Docker version
+docker --version 
