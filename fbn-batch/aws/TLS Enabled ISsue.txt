@@ -1,0 +1,15 @@
+# Prepare instance
+
+sudo apt-get update
+sudo apt-get install docker.io
+ 
+sudo apt-get -y install lxc
+sudo gpasswd -a ${USER} docker
+newgrp docker
+sudo service docker restart
+
+
+Optionally, you may need to install two additional dependencies if the above doesn't work:
+
+sudo apt-get -y install apparmor cgroup-lite
+sudo service docker restart

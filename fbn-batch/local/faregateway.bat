@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-fare-apigateway\target\fare-apigateway-0.0.1-SNAPSHOT.jar

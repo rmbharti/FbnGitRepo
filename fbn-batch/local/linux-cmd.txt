@@ -1,0 +1,15 @@
+ormally when starting you get the pid returend like so:
+
+~ $ nohup java -jar server.jar &
+[1] 3305
+~ $ nohup: ignoring input and appending output to ‘nohup.out’
+to see if it is running you can issue
+
+~ $ ps -ef | grep  server
+user1  3305  2936  0 13:58 pts/1    00:00:00 java -jar server.jar
+if you see a line like the above it is running. You may also hava a look at the nohup.out file, which is written to the directory you started the server in, by using
+
+tail nohup.out
+to kill the process issue kill . Where pid is the process id, you either remembered, or will find out by looking at the second row of the "ps -ef | grep server" command, in our case 3305
+
+kill 3305 

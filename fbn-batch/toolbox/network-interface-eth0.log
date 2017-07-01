@@ -1,0 +1,26 @@
+Internet Systems Consortium DHCP Client 4.2.4
+Copyright 2004-2012 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/eth0/02:17:00:23:27:27
+Sending on   LPF/eth0/02:17:00:23:27:27
+Sending on   Socket/fallback
+DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 3 (xid=0x13d10302)
+DHCPREQUEST of 172.31.5.157 on eth0 to 255.255.255.255 port 67 (xid=0x203d113)
+DHCPOFFER of 172.31.5.157 from 172.31.0.1
+DHCPACK of 172.31.5.157 from 172.31.0.1
+bound to 172.31.5.157 -- renewal in 1781 seconds.
+Internet Systems Consortium DHCP Client 4.2.4
+Copyright 2004-2012 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/eth0/02:17:00:23:27:27
+Sending on   LPF/eth0/02:17:00:23:27:27
+Sending on   Socket/fallback
+DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 3 (xid=0x3299c519)
+DHCPREQUEST of 172.31.5.157 on eth0 to 255.255.255.255 port 67 (xid=0x19c59932)
+DHCPOFFER of 172.31.5.157 from 172.31.0.1
+DHCPACK of 172.31.5.157 from 172.31.0.1
+bound to 172.31.5.157 -- renewal in 1776 seconds.
