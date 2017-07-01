@@ -16,6 +16,7 @@
   
    <modules>
         <module>../fbn-config-server</module>
+        <module>../fbn-eureka-master</module>
    </modules>
 
   <dependencies>
