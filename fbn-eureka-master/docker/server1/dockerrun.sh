@@ -1,0 +1,1 @@
+docker run --net host -p 9002:9002 fbn-eureka-master.jar:1.0
