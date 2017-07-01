@@ -2,7 +2,6 @@ package com.fbn;
 
 /**
  * Hello world!
- *
  */
 public class App 
 {
