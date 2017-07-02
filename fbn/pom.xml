@@ -19,9 +19,9 @@
 		<module>../fbn-eureka-master</module>
 
 		<module>../fbn-booking</module>
-<!-- <module>../fbn-booking-apigateway</module> -->
-			<!-- <module>../fbn-booking-lcm</module>
-		<module>../fbn-booking-reactive-ms</module>
+		<module>../fbn-booking-apigateway</module> 
+		<module>../fbn-booking-lcm</module>
+		<!-- <module>../fbn-booking-reactive-ms</module>
 		<module>../fbn-checkin</module>
 		<module>../fbn-checkin-apigateway</module>
 		<module>../fbn-checkin-lcm</module>
