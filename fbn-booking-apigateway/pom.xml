@@ -12,7 +12,6 @@
 
 	<groupId>com.fbn</groupId>
 	<artifactId>booking-apigateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>booking-apigateway</name>
@@ -49,6 +48,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zuul</artifactId>
 			<version>1.3.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 
 		<dependency>
