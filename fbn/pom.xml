@@ -22,12 +22,12 @@
 		<module>../fbn-booking-apigateway</module> 
 		<module>../fbn-booking-lcm</module>
 		<module>../fbn-booking-reactive-ms</module>
-		<!--<module>../fbn-checkin</module>
+		<module>../fbn-checkin</module>
 		<module>../fbn-checkin-apigateway</module>
 		<module>../fbn-checkin-lcm</module>
 		<module>../fbn-checkin-reactive-ms</module>
-		<module>../fbn-fare-apigateway</module>
-		<module>../fbn-fare-lcm</module>
+		<module>../fbn-fares-apigateway</module>
+		<module>../fbn-fares-lcm</module>
 		<module>../fbn-fares</module>
 		<module>../fbn-search</module>
 		<module>../fbn-search-apigateway</module>
@@ -37,7 +37,7 @@
 		<module>../fbn-search-reactive-ms</module>
 		<module>../fbn-turbine-server</module>
 		<module>../fbn-web</module>
-		 -->	
+		
 	</modules>
 
 	<dependencies>
