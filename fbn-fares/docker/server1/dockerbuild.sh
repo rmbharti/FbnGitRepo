@@ -1,0 +1,1 @@
+docker build -t fbn-fares-service:1.0 .

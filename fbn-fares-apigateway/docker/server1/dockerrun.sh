@@ -1,0 +1,1 @@
+docker run --net host -p 9007:9007 fbn-fare-apigateway:1.0

@@ -1,0 +1,1 @@
+docker run --net host -p 9004:9004 fbn-fares-service:1.0

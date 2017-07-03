@@ -1,0 +1,1 @@
+docker build -t fare-apigateway-server:1.0 .

@@ -1,0 +1,26 @@
+{
+	"id": "fbn-fares-service:1.0",
+	"cpus": 0.5,
+	"mem": 256.0,
+	"instances": 1,
+	"container": {
+		"docker": {
+			"type": "DOCKER",
+			"image": "fbn-fares-service:1.0",
+			"network": " BRIDGE",
+			"portMappings": {
+				"containerPort": 0,
+				"hostPort": 9004
+			}
+		}
+	},
+	"healthChecks": {
+		"protocol": "HTTP",
+		"portIndex": 0,
+		"path": "/admin/health",
+		"gracePeriodSeconds": 100,
+		"intervalSeconds": 10,
+		"maxConsecutiveFailures": 5
+	}
+
+}
