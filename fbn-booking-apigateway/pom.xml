@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>com.fbn</groupId>
-	<artifactId>booking-apigateway</artifactId>
+	<artifactId>fbn-booking-apigateway</artifactId>
 	<packaging>jar</packaging>
 
-	<name>booking-apigateway</name>
+	<name>fbn-booking-apigateway</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
