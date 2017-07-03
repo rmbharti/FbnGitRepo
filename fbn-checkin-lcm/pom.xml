@@ -13,11 +13,11 @@
 
 
 	<groupId>com.fbn</groupId>
-	<artifactId>fbn-fare-lcm</artifactId>
+	<artifactId>fbn-checkin-lcm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>fbn-fare-lcm</name>
+	<name>fbn-checkin-lcm</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
