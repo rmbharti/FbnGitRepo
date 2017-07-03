@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-checkin\target\\fbn-checkin-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,866 @@
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_HOME=c:\Microservices\jdk1.8.0_131
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>c:\Microservices\logstash-5.4.0\bin\logstash -f C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\logstash.conf
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SETLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set SCRIPT_DIR=c:\Microservices\logstash-5.4.0\bin\
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>CALL "c:\Microservices\logstash-5.4.0\bin\\setup.bat"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>for %I in ("c:\Microservices\logstash-5.4.0\bin\..") do set LS_HOME=%~dpfI
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set LS_HOME=c:\Microservices\logstash-5.4.0
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "1" (goto setup_ruby )  else (goto setup_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_java()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT DEFINED JAVA_HOME (FOR %I IN (java.exe) DO set JAVA_EXE=%~$PATH:I )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE set JAVA_HOME=\bin\java.exe=
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE echo Using JAVA_HOME=c:\Microservices\jdk1.8.0_131 retrieved from PATH
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if not defined JAVA_HOME goto missing_java_home
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM ***** JAVA options *****
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "" (set LS_HEAP_SIZE=1g )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO JAVA_OPTS was set to []. Logstash will trust these options, and not set any defaults that it might usually set
+ goto opts_defined
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Enable aggressive optimizations in the JVM
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM    - Disabled by default as it might cause the JVM to crash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM set JAVA_OPTS= -Xmx1g -XX:+AggressiveOpts
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>//Modified to add log4j2.properties - Raman
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM GC logging options -- uncomment to enable
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCDetails
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCTimeStamps
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintClassHistogram
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintTenuringDistribution
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCApplicationStoppedTime
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -Xloggc:/var/log/logstash/gc.log
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Causes the JVM to dump its heap on OutOfMemory.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM The path to the heap dump location, note directory must exists and have enough
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM space for a full heap dump.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO LS_JAVA_OPTS was set to []. This will be appended to the JAVA_OPTS [ -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"]
+ SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_vendored_jruby()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JRUBY_BIN="c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if exist ""c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"" (
+set VENDORED_JRUBY=1
+ goto finally
+)  else (goto missing_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set RUBYLIB=c:\Microservices\logstash-5.4.0\lib
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM is the first argument a flag? If so, assume 'agent'
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set first_arg=-f
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>setlocal EnableDelayedExpansion
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "!first_arg:~0,1!" EQU "-" (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\logstash.conf ) )  else (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace\fbn-config-bat-props\logstash-log-config\logstash.conf ) )
+2017-05-24 08:23:07,931 main ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+2017-05-24 08:23:09,331 LogStash::Runner ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+[2017-05-24T08:23:36,884][ERROR][logstash.outputs.elasticsearch] Failed to install template. {:message=>"Elasticsearch Unreachable: [http://localhost:9300/][Manticore::SocketException] Connection refused: connect", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :backtrace=>["c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:287:in `perform_request_to_url'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:273:in `perform_request'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:363:in `with_connection'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:272:in `perform_request'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:280:in `get'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client.rb:83:in `get_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:16:in `get_es_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:20:in `get_es_major_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:7:in `install_template'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/common.rb:54:in `install_template'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/common.rb:21:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/output_delegator_strategies/shared.rb:9:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/output_delegator.rb:41:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:268:in `register_plugin'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:279:in `register_plugins'", "org/jruby/RubyArray.java:1613:in `each'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:279:in `register_plugins'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:288:in `start_workers'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:214:in `run'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/agent.rb:398:in `start_pipeline'"]}
+[2017-05-24T12:03:02,575][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:03:02,744][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:03:02,912][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:03:04,600][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:03:04,756][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:03:04,915][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:03:08,605][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:03:08,761][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:03:08,926][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:03:16,616][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:03:16,773][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:03:16,929][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:03:27,741][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:03:29,804][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:03:32,623][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:03:32,780][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:03:32,936][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:03:33,842][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:03:41,845][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:03:57,858][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:04:04,648][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:04:04,819][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:04:04,960][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:04:29,900][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:05:08,683][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:05:08,870][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:05:08,995][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:05:33,905][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:06:12,695][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:06:12,883][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:06:13,008][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:06:38,203][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:07:16,705][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:07:16,893][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:07:17,018][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:07:42,828][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:08:20,709][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:08:20,897][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:08:21,020][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:08:46,886][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:09:24,719][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:09:24,903][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:09:25,027][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:09:50,902][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:10:28,898][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:10:29,158][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:10:29,066][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:10:54,918][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:11:33,277][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:11:33,325][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:11:33,549][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:11:59,013][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:12:37,287][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:12:37,339][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:12:37,575][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:13:03,021][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:13:41,293][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:13:41,345][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:13:41,642][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:14:07,027][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:14:45,298][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:14:45,356][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:14:45,655][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:15:11,033][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:15:49,301][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:15:49,411][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:15:49,656][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:16:15,040][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:16:53,313][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:16:53,425][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:16:53,661][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:17:19,055][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:17:57,335][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:17:57,431][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:17:57,668][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:18:23,080][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:19:01,346][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:19:01,442][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:19:01,674][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:19:27,085][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:20:05,357][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:20:05,448][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:20:05,686][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:20:31,088][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:21:09,390][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:21:09,454][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:21:09,690][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:21:35,098][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:22:13,415][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:22:13,462][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:22:13,696][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:22:39,116][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:23:17,432][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:23:17,479][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:23:17,713][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:23:43,129][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:24:21,433][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:24:21,480][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:24:21,715][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:24:47,144][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:25:25,433][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:25:25,480][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:25:25,730][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:25:51,158][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:26:29,439][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:26:29,486][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:26:29,734][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:26:55,165][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:27:33,449][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:27:33,496][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:27:33,761][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:27:59,174][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:28:37,474][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:28:37,505][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:28:37,817][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:29:03,191][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:29:41,504][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:29:41,519][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:29:41,899][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:30:07,200][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:30:45,508][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:30:45,524][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:30:45,899][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:31:11,200][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+^CTerminate batch job (Y/N)?
+^C
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>ENDLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>[2017-05-24T12:31:42,058][FATAL][logstash.runner          ] SIGINT received. Terminating immediately..
+
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>logstash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_HOME=c:\Microservices\jdk1.8.0_131
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>c:\Microservices\logstash-5.4.0\bin\logstash -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SETLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set SCRIPT_DIR=c:\Microservices\logstash-5.4.0\bin\
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>CALL "c:\Microservices\logstash-5.4.0\bin\\setup.bat"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>for %I in ("c:\Microservices\logstash-5.4.0\bin\..") do set LS_HOME=%~dpfI
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set LS_HOME=c:\Microservices\logstash-5.4.0
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "1" (goto setup_ruby )  else (goto setup_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_java()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT DEFINED JAVA_HOME (FOR %I IN (java.exe) DO set JAVA_EXE=%~$PATH:I )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE set JAVA_HOME=\bin\java.exe=
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE echo Using JAVA_HOME=c:\Microservices\jdk1.8.0_131 retrieved from PATH
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if not defined JAVA_HOME goto missing_java_home
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM ***** JAVA options *****
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "" (set LS_HEAP_SIZE=1g )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO JAVA_OPTS was set to []. Logstash will trust these options, and not set any defaults that it might usually set
+ goto opts_defined
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Enable aggressive optimizations in the JVM
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM    - Disabled by default as it might cause the JVM to crash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM set JAVA_OPTS= -Xmx1g -XX:+AggressiveOpts
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>//Modified to add log4j2.properties - Raman
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM GC logging options -- uncomment to enable
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCDetails
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCTimeStamps
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintClassHistogram
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintTenuringDistribution
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCApplicationStoppedTime
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -Xloggc:/var/log/logstash/gc.log
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Causes the JVM to dump its heap on OutOfMemory.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM The path to the heap dump location, note directory must exists and have enough
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM space for a full heap dump.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO LS_JAVA_OPTS was set to []. This will be appended to the JAVA_OPTS [ -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"]
+ SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_vendored_jruby()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JRUBY_BIN="c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if exist ""c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"" (
+set VENDORED_JRUBY=1
+ goto finally
+)  else (goto missing_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set RUBYLIB=c:\Microservices\logstash-5.4.0\lib
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM is the first argument a flag? If so, assume 'agent'
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set first_arg=-f
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>setlocal EnableDelayedExpansion
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "!first_arg:~0,1!" EQU "-" (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )  else (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )
+2017-05-24 12:32:39,157 main ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+2017-05-24 12:32:39,532 LogStash::Runner ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+[2017-05-24T12:32:45,754][ERROR][logstash.outputs.elasticsearch] Failed to install template. {:message=>"Elasticsearch Unreachable: [http://localhost:9300/][Manticore::ClientProtocolException] The server failed to respond with a valid HTTP response", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :backtrace=>["c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:287:in `perform_request_to_url'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:273:in `perform_request'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:363:in `with_connection'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:272:in `perform_request'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client/pool.rb:280:in `get'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/http_client.rb:83:in `get_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:16:in `get_es_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:20:in `get_es_major_version'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/template_manager.rb:7:in `install_template'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/common.rb:54:in `install_template'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-6.3.0-java/lib/logstash/outputs/elasticsearch/common.rb:21:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/output_delegator_strategies/shared.rb:9:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/output_delegator.rb:41:in `register'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:268:in `register_plugin'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:279:in `register_plugins'", "org/jruby/RubyArray.java:1613:in `each'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:279:in `register_plugins'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:288:in `start_workers'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/pipeline.rb:214:in `run'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/agent.rb:398:in `start_pipeline'"]}
+^CTerminate batch job (Y/N)?
+^C
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>ENDLOCAL
+[2017-05-24T12:33:18,461][FATAL][logstash.runner          ] SIGINT received. Terminating immediately..
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>[2017-05-24T12:33:18,664][FATAL][logstash.runner          ] SIGINT received. Terminating immediately..
+
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>logstash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_HOME=c:\Microservices\jdk1.8.0_131
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>c:\Microservices\logstash-5.4.0\bin\logstash -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SETLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set SCRIPT_DIR=c:\Microservices\logstash-5.4.0\bin\
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>CALL "c:\Microservices\logstash-5.4.0\bin\\setup.bat"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>for %I in ("c:\Microservices\logstash-5.4.0\bin\..") do set LS_HOME=%~dpfI
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set LS_HOME=c:\Microservices\logstash-5.4.0
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "1" (goto setup_ruby )  else (goto setup_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_java()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT DEFINED JAVA_HOME (FOR %I IN (java.exe) DO set JAVA_EXE=%~$PATH:I )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE set JAVA_HOME=\bin\java.exe=
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE echo Using JAVA_HOME=c:\Microservices\jdk1.8.0_131 retrieved from PATH
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if not defined JAVA_HOME goto missing_java_home
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM ***** JAVA options *****
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "" (set LS_HEAP_SIZE=1g )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO JAVA_OPTS was set to []. Logstash will trust these options, and not set any defaults that it might usually set
+ goto opts_defined
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Enable aggressive optimizations in the JVM
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM    - Disabled by default as it might cause the JVM to crash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM set JAVA_OPTS= -Xmx1g -XX:+AggressiveOpts
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>//Modified to add log4j2.properties - Raman
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM GC logging options -- uncomment to enable
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCDetails
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCTimeStamps
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintClassHistogram
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintTenuringDistribution
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCApplicationStoppedTime
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -Xloggc:/var/log/logstash/gc.log
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Causes the JVM to dump its heap on OutOfMemory.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM The path to the heap dump location, note directory must exists and have enough
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM space for a full heap dump.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO LS_JAVA_OPTS was set to []. This will be appended to the JAVA_OPTS [ -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"]
+ SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_vendored_jruby()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JRUBY_BIN="c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if exist ""c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"" (
+set VENDORED_JRUBY=1
+ goto finally
+)  else (goto missing_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set RUBYLIB=c:\Microservices\logstash-5.4.0\lib
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM is the first argument a flag? If so, assume 'agent'
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set first_arg=-f
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>setlocal EnableDelayedExpansion
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "!first_arg:~0,1!" EQU "-" (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )  else (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )
+ERROR StatusLogger Unable to access file:/C:/Users/admin/Desktop/workspace4/fbn-config-bat-props/logstash-log-config/log4j2.properties
+ java.io.FileNotFoundException: C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties (The system cannot find the file specified)
+        at java.io.FileInputStream.open0(Native Method)
+        at java.io.FileInputStream.open(FileInputStream.java:195)
+        at java.io.FileInputStream.<init>(FileInputStream.java:138)
+        at java.io.FileInputStream.<init>(FileInputStream.java:93)
+        at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+        at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+        at java.net.URL.openStream(URL.java:1045)
+        at org.apache.logging.log4j.core.config.ConfigurationFactory.getInputFromUri(ConfigurationFactory.java:299)
+        at org.apache.logging.log4j.core.config.ConfigurationFactory$Factory.getConfiguration(ConfigurationFactory.java:463)
+        at org.apache.logging.log4j.core.config.ConfigurationFactory$Factory.getConfiguration(ConfigurationFactory.java:410)
+        at org.apache.logging.log4j.core.config.ConfigurationFactory.getConfiguration(ConfigurationFactory.java:257)
+        at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:565)
+        at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:582)
+        at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:217)
+        at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:242)
+        at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:45)
+        at org.apache.logging.log4j.LogManager.getContext(LogManager.java:174)
+        at org.apache.logging.log4j.core.LoggerContext.getContext(LoggerContext.java:178)
+        at org.apache.logging.log4j.core.config.Configurator.setLevel(Configurator.java:290)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at org.jruby.javasupport.JavaMethod.invokeDirectWithExceptionHandling(JavaMethod.java:466)
+        at org.jruby.javasupport.JavaMethod.invokeStaticDirect(JavaMethod.java:368)
+        at org.jruby.java.invokers.StaticMethodInvoker.call(StaticMethodInvoker.java:61)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:346)
+        at org.jruby.runtime.callsite.CachingCallSite.call(CachingCallSite.java:204)
+        at org.jruby.ast.CallTwoArgNode.interpret(CallTwoArgNode.java:59)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_BLOCK(ASTInterpreter.java:112)
+        at org.jruby.runtime.Interpreted19Block.evalBlockBody(Interpreted19Block.java:206)
+        at org.jruby.runtime.Interpreted19Block.yield(Interpreted19Block.java:157)
+        at org.jruby.runtime.Block.yield(Block.java:142)
+        at org.jruby.ext.thread.Mutex.synchronize(Mutex.java:149)
+        at org.jruby.ext.thread.Mutex$INVOKER$i$0$0$synchronize.call(Mutex$INVOKER$i$0$0$synchronize.gen)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:316)
+        at org.jruby.runtime.callsite.CachingCallSite.callBlock(CachingCallSite.java:145)
+        at org.jruby.runtime.callsite.CachingCallSite.callIter(CachingCallSite.java:154)
+        at org.jruby.ast.CallNoArgBlockNode.interpret(CallNoArgBlockNode.java:64)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.ast.RescueNode.executeBody(RescueNode.java:221)
+        at org.jruby.ast.RescueNode.interpret(RescueNode.java:116)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_METHOD(ASTInterpreter.java:74)
+        at org.jruby.internal.runtime.methods.InterpretedMethod.call(InterpretedMethod.java:182)
+        at org.jruby.internal.runtime.methods.DefaultMethod.call(DefaultMethod.java:203)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:326)
+        at org.jruby.runtime.callsite.CachingCallSite.call(CachingCallSite.java:170)
+        at org.jruby.ast.CallOneArgNode.interpret(CallOneArgNode.java:57)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.ast.BlockNode.interpret(BlockNode.java:71)
+        at org.jruby.ast.RescueNode.executeBody(RescueNode.java:221)
+        at org.jruby.ast.RescueNode.interpret(RescueNode.java:116)
+        at org.jruby.ast.EnsureNode.interpret(EnsureNode.java:96)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_METHOD(ASTInterpreter.java:74)
+        at org.jruby.internal.runtime.methods.InterpretedMethod.call(InterpretedMethod.java:139)
+        at org.jruby.internal.runtime.methods.DefaultMethod.call(DefaultMethod.java:187)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:306)
+        at org.jruby.runtime.callsite.CachingCallSite.call(CachingCallSite.java:136)
+        at org.jruby.ast.VCallNode.interpret(VCallNode.java:88)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.ast.BlockNode.interpret(BlockNode.java:71)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_METHOD(ASTInterpreter.java:74)
+        at org.jruby.internal.runtime.methods.InterpretedMethod.call(InterpretedMethod.java:204)
+        at org.jruby.internal.runtime.methods.DefaultMethod.call(DefaultMethod.java:211)
+        at org.jruby.runtime.callsite.SuperCallSite.cacheAndCall(SuperCallSite.java:366)
+        at org.jruby.runtime.callsite.SuperCallSite.callBlock(SuperCallSite.java:192)
+        at org.jruby.runtime.callsite.SuperCallSite.call(SuperCallSite.java:197)
+        at org.jruby.runtime.callsite.SuperCallSite.callVarargs(SuperCallSite.java:108)
+        at org.jruby.ast.SuperNode.interpret(SuperNode.java:115)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.ast.BlockNode.interpret(BlockNode.java:71)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_METHOD(ASTInterpreter.java:74)
+        at org.jruby.internal.runtime.methods.InterpretedMethod.call(InterpretedMethod.java:182)
+        at org.jruby.internal.runtime.methods.DefaultMethod.call(DefaultMethod.java:203)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:326)
+        at org.jruby.runtime.callsite.CachingCallSite.call(CachingCallSite.java:170)
+        at org.jruby.ast.CallOneArgNode.interpret(CallOneArgNode.java:57)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.ast.RescueNode.executeBody(RescueNode.java:221)
+        at org.jruby.ast.RescueNode.interpret(RescueNode.java:116)
+        at org.jruby.ast.BeginNode.interpret(BeginNode.java:83)
+        at org.jruby.ast.NewlineNode.interpret(NewlineNode.java:105)
+        at org.jruby.evaluator.ASTInterpreter.INTERPRET_METHOD(ASTInterpreter.java:74)
+        at org.jruby.internal.runtime.methods.InterpretedMethod.call(InterpretedMethod.java:225)
+        at org.jruby.internal.runtime.methods.DefaultMethod.call(DefaultMethod.java:219)
+        at org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(CachingCallSite.java:346)
+        at org.jruby.runtime.callsite.CachingCallSite.call(CachingCallSite.java:204)
+        at c_3a_.Microservices.logstash_minus_5_dot_4_dot_0.lib.bootstrap.environment.__file__(c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb:71)
+        at c_3a_.Microservices.logstash_minus_5_dot_4_dot_0.lib.bootstrap.environment.load(c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb)
+        at org.jruby.Ruby.runScript(Ruby.java:857)
+        at org.jruby.Ruby.runScript(Ruby.java:850)
+        at org.jruby.Ruby.runNormally(Ruby.java:729)
+        at org.jruby.Ruby.runFromMain(Ruby.java:578)
+        at org.jruby.Main.doRunFromMain(Main.java:393)
+        at org.jruby.Main.internalRun(Main.java:288)
+        at org.jruby.Main.run(Main.java:217)
+        at org.jruby.Main.main(Main.java:197)
+An unexpected error occurred! :error => invalid level[info] for logger[], :backtrace => ["c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/logging/logger.rb:70:in `configure_logging'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/runner.rb:208:in `execute'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/clamp-0.6.5/lib/clamp/command.rb:67:in `run'", "c:/Microservices/logstash-5.4.0/logstash-core/lib/logstash/runner.rb:185:in `run'", "c:/Microservices/logstash-5.4.0/vendor/bundle/jruby/1.9/gems/clamp-0.6.5/lib/clamp/command.rb:132:in `run'", "c:\\Microservices\\logstash-5.4.0\\lib\\bootstrap\\environment.rb:71:in `(root)'"]
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>ENDLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>logstash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_HOME=c:\Microservices\jdk1.8.0_131
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>c:\Microservices\logstash-5.4.0\bin\logstash -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SETLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set SCRIPT_DIR=c:\Microservices\logstash-5.4.0\bin\
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>CALL "c:\Microservices\logstash-5.4.0\bin\\setup.bat"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>for %I in ("c:\Microservices\logstash-5.4.0\bin\..") do set LS_HOME=%~dpfI
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set LS_HOME=c:\Microservices\logstash-5.4.0
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "1" (goto setup_ruby )  else (goto setup_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_java()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT DEFINED JAVA_HOME (FOR %I IN (java.exe) DO set JAVA_EXE=%~$PATH:I )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE set JAVA_HOME=\bin\java.exe=
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE echo Using JAVA_HOME=c:\Microservices\jdk1.8.0_131 retrieved from PATH
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if not defined JAVA_HOME goto missing_java_home
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM ***** JAVA options *****
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "" (set LS_HEAP_SIZE=1g )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO JAVA_OPTS was set to []. Logstash will trust these options, and not set any defaults that it might usually set
+ goto opts_defined
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Enable aggressive optimizations in the JVM
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM    - Disabled by default as it might cause the JVM to crash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM set JAVA_OPTS= -Xmx1g -XX:+AggressiveOpts
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>//Modified to add log4j2.properties - Raman
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM GC logging options -- uncomment to enable
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCDetails
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCTimeStamps
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintClassHistogram
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintTenuringDistribution
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCApplicationStoppedTime
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -Xloggc:/var/log/logstash/gc.log
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Causes the JVM to dump its heap on OutOfMemory.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM The path to the heap dump location, note directory must exists and have enough
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM space for a full heap dump.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO LS_JAVA_OPTS was set to []. This will be appended to the JAVA_OPTS [ -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"]
+ SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_vendored_jruby()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JRUBY_BIN="c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if exist ""c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"" (
+set VENDORED_JRUBY=1
+ goto finally
+)  else (goto missing_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set RUBYLIB=c:\Microservices\logstash-5.4.0\lib
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM is the first argument a flag? If so, assume 'agent'
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set first_arg=-f
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>setlocal EnableDelayedExpansion
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "!first_arg:~0,1!" EQU "-" (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )  else (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )
+2017-05-24 12:36:43,472 main ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+2017-05-24 12:36:43,691 LogStash::Runner ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+[2017-05-24T12:39:20,636][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:39:20,667][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:39:24,114][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:39:26,114][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:39:26,707][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>2}
+[2017-05-24T12:39:28,707][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:39:30,154][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:40:22,706][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:40:22,737][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>4}
+[2017-05-24T12:40:32,713][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:40:38,184][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::SocketTimeout] Read timed out", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:40:40,715][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:41:10,356][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::ClientProtocolException] localhost:9200 failed to respond", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:41:10,371][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::ClientProtocolException] localhost:9200 failed to respond", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:41:10,356][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::ClientProtocolException] localhost:9200 failed to respond", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>8}
+[2017-05-24T12:41:10,356][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch' but Elasticsearch appears to be unreachable or down! {:error_message=>"Elasticsearch Unreachable: [http://localhost:9200/][Manticore::ClientProtocolException] localhost:9200 failed to respond", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::HostUnreachableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:41:18,406][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:41:18,422][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>16}
+[2017-05-24T12:41:34,406][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:41:34,438][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>32}
+[2017-05-24T12:41:42,409][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:41:42,425][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:42:06,643][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:42:06,643][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:42:46,447][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+[2017-05-24T12:42:46,494][ERROR][logstash.outputs.elasticsearch] Attempted to send a bulk request to elasticsearch, but no there are no living connections in the connection pool. Perhaps Elasticsearch is unreachable or down? {:error_message=>"No Available connections", :class=>"LogStash::Outputs::ElasticSearch::HttpClient::Pool::NoConnectionAvailableError", :will_retry_in_seconds=>64}
+^CTerminate batch job (Y/N)?
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>^CENDLOCAL
+[2017-05-24T12:43:48,851][FATAL][logstash.runner          ] SIGINT received. Terminating immediately..
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>logstash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_HOME=c:\Microservices\jdk1.8.0_131
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>c:\Microservices\logstash-5.4.0\bin\logstash -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SETLOCAL
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set SCRIPT_DIR=c:\Microservices\logstash-5.4.0\bin\
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>CALL "c:\Microservices\logstash-5.4.0\bin\\setup.bat"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>for %I in ("c:\Microservices\logstash-5.4.0\bin\..") do set LS_HOME=%~dpfI
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set LS_HOME=c:\Microservices\logstash-5.4.0
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "1" (goto setup_ruby )  else (goto setup_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_java()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT DEFINED JAVA_HOME (FOR %I IN (java.exe) DO set JAVA_EXE=%~$PATH:I )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE set JAVA_HOME=\bin\java.exe=
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if defined JAVA_EXE echo Using JAVA_HOME=c:\Microservices\jdk1.8.0_131 retrieved from PATH
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if not defined JAVA_HOME goto missing_java_home
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM ***** JAVA options *****
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "" == "" (set LS_HEAP_SIZE=1g )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO JAVA_OPTS was set to []. Logstash will trust these options, and not set any defaults that it might usually set
+ goto opts_defined
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Enable aggressive optimizations in the JVM
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM    - Disabled by default as it might cause the JVM to crash
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM set JAVA_OPTS= -Xmx1g -XX:+AggressiveOpts
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>//Modified to add log4j2.properties - Raman
+The filename, directory name, or volume label syntax is incorrect.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM GC logging options -- uncomment to enable
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCDetails
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCTimeStamps
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintClassHistogram
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintTenuringDistribution
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+PrintGCApplicationStoppedTime
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -Xloggc:/var/log/logstash/gc.log
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM Causes the JVM to dump its heap on OutOfMemory.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM The path to the heap dump location, note directory must exists and have enough
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM space for a full heap dump.
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>IF NOT "" == "" (
+ECHO LS_JAVA_OPTS was set to []. This will be appended to the JAVA_OPTS [ -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"]
+ SET JAVA_OPTS= -Xmx1g -Dlog4j.configurationFile=C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\log4j2.properties -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="c:\Microservices\logstash-5.4.0/heapdump.hprof"
+)
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM setup_vendored_jruby()
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set JRUBY_BIN="c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if exist ""c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"" (
+set VENDORED_JRUBY=1
+ goto finally
+)  else (goto missing_jruby )
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set RUBYLIB=c:\Microservices\logstash-5.4.0\lib
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>REM is the first argument a flag? If so, assume 'agent'
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>set first_arg=-f
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>setlocal EnableDelayedExpansion
+
+C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\batch-files>if "!first_arg:~0,1!" EQU "-" (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )  else (if "1" == "" ("c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf )  else ("c:\Microservices\logstash-5.4.0\vendor\jruby\bin\jruby"  "c:\Microservices\logstash-5.4.0\lib\bootstrap\environment.rb" "logstash\runner.rb" -f C:\Users\admin\Desktop\workspace4\fbn-config-bat-props\logstash-log-config\logstash.conf ) )
+2017-05-24 12:44:44,996 main ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"
+2017-05-24 12:44:45,214 LogStash::Runner ERROR Unable to locate appender "plain_rolling_slowlog " for logger config "slowlog"

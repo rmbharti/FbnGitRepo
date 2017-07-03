@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-booking-apigateway\target\booking-apigateway-0.0.1-SNAPSHOT.jar 

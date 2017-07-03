@@ -1,0 +1,1 @@
+java -jar C:\Users\admin\Desktop\workspace\fbn-server-config\target\fbn-server-config-0.0.1-SNAPSHOT.jar

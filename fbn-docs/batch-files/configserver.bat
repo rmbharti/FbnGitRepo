@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-applib\fbn-server-config-0.0.1-SNAPSHOT.jar

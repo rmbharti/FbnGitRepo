@@ -1,0 +1,1 @@
+docker build -t search:1.0 .

@@ -1,0 +1,29 @@
+start configserver.bat
+sleep 45
+start eurekaserver1.bat
+sleep 45
+start logstash.bat
+sleep 45
+start elastic.bat
+sleep 45
+start kibana.bat
+sleep 45
+
+start fareservice.bat
+sleep 30
+start faregateway.bat
+sleep 20
+start checkinservice.bat
+sleep 20
+start checkingateway.bat
+sleep 20
+start searchservice.bat
+sleep 20
+start searchgateway.bat
+sleep 20
+start bookingservice.bat
+sleep 20
+start bookinggateway.bat
+sleep 20
+start web.bat
+

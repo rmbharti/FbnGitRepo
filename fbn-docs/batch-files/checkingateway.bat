@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-checkin-apigateway\target\checkin-apigateway-0.0.1-SNAPSHOT.jar 

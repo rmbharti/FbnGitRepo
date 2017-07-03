@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-fares\target\fbn-fares-0.0.1-SNAPSHOT.jar

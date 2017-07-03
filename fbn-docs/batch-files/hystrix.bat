@@ -1,0 +1,1 @@
+java -jar ..\..\fbn-search-hystrix-dashboard\target\fbn-search-hystrix-dashboard-0.0.1-SNAPSHOT.jar
