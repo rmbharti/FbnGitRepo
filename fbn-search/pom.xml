@@ -13,7 +13,7 @@
 
 	<groupId>com.fbn</groupId>
 	<artifactId>fbn-search</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	
 	<packaging>jar</packaging>
 
 	<name>fbn-search</name>
@@ -101,7 +101,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.1.11</version>
+			<!-- <version>1.1.11</version> -->
 		</dependency>
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
@@ -256,7 +256,7 @@
 <!-- 				</executions> -->
 <!-- 			</plugin> -->
 
-			<plugin>
+		<!-- 	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -270,7 +270,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 

@@ -13,7 +13,6 @@
 
 	<groupId>com.fbn</groupId>
 	<artifactId>fbn-eureka-master</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>fbn-eureka-master</name>
@@ -31,7 +30,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
 		</dependency>
 
 		<dependency>
@@ -56,7 +54,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<version>1.4.6.RELEASE</version>
+			<!-- <version>1.4.6.RELEASE</version> -->
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jettison</groupId>
@@ -73,19 +71,19 @@
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
-			<version>1.11</version>
+			<!-- <version>1.11</version> -->
 
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-servlet</artifactId>
-			<version>1.11</version>
+			<!-- <version>1.11</version> -->
 
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-client</artifactId>
-			<version>1.11</version>
+		<!-- 	<version>1.11</version> -->
 
 		</dependency>
 
@@ -194,14 +192,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<outputDirectory>..\fbn-applib\jars</outputDirectory>
 				</configuration>
 			</plugin>
-
+ -->
 
 			<plugin>
 				<!-- Build an executable JAR -->
@@ -219,7 +217,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -233,16 +231,16 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<outputDirectory>.\docker</outputDirectory>
 				</configuration>
 			</plugin>
-
+ -->
 
 
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 

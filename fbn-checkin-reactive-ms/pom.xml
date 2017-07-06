@@ -14,7 +14,6 @@
 
 	<groupId>com.fbn</groupId>
 	<artifactId>fbn-checkin-reactive-ms</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>fbn-checkin-reactive-ms</name>
@@ -210,7 +209,7 @@
 <!-- 				</executions> -->
 <!-- 			</plugin> -->
 
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -224,7 +223,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 

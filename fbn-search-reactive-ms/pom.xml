@@ -14,7 +14,7 @@
 
 	<groupId>com.fbn</groupId>
 	<artifactId>fbn-search-reactive-ms</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+
 	<packaging>jar</packaging>
 
 	<name>fbn-search-reactive-ms</name>
@@ -221,7 +221,7 @@
 			<!-- </execution> -->
 			<!-- </executions> -->
 			<!-- </plugin> -->
-
+<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -236,7 +236,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 
