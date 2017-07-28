@@ -1,0 +1,22 @@
+# ----------------------------------------
+# SECURITY PROPERTIES
+# ----------------------------------------
+# SECURITY (SecurityProperties)
+security.basic.authorize-mode=role # Security authorize mode to apply.
+security.basic.enabled=true # Enable basic authentication.
+security.basic.path=/** # Comma-separated list of paths to secure.
+security.basic.realm=Spring # HTTP basic realm name.
+security.enable-csrf=false # Enable Cross Site Request Forgery support.
+security.filter-order=0 # Security filter chain order.
+security.filter-dispatcher-types=ASYNC, FORWARD, INCLUDE, REQUEST # Security filter chain dispatcher types.
+security.headers.cache=true # Enable cache control HTTP headers.
+security.headers.content-type=true # Enable "X-Content-Type-Options" header.
+security.headers.frame=true # Enable "X-Frame-Options" header.
+security.headers.hsts= # HTTP Strict Transport Security (HSTS) mode (none, domain, all).
+security.headers.xss=true # Enable cross site scripting (XSS) protection.
+security.ignored= # Comma-separated list of paths to exclude from the default secured paths.
+security.require-ssl=false # Enable secure channel for all requests.
+security.sessions=stateless # Session creation policy (always, never, if_required, stateless).
+security.user.name=user # Default user name.
+security.user.password= # Password for the default user name. A random password is logged on startup by default.
+security.user.role=USER # Granted roles for the default user name.
